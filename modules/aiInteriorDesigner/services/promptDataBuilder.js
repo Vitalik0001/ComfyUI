@@ -154,7 +154,7 @@ export default (contactId, query, firstImageName = '', secondImageName = '', COM
             1
           ],
           "image": [
-            "140",
+            "145",
             0
           ],
           "clip_vision": [
@@ -227,7 +227,7 @@ export default (contactId, query, firstImageName = '', secondImageName = '', COM
           "divisible_by": 8,
           "device": "cpu",
           "image": [
-            "141",
+            "143",
             0
           ]
         },
@@ -302,29 +302,53 @@ export default (contactId, query, firstImageName = '', secondImageName = '', COM
       },
       "139": {
         "inputs": {
-          "value": "kitchen"
+          "value": query
         },
         "class_type": "PrimitiveString",
         "_meta": {
           "title": "image description"
         }
       },
-      "140": {
+      "142": {
         "inputs": {
-          "image": "kitchen_type.jpg"
+          "value": `${COMFY_FILE_BASE_PATH}/ai-interior-designer/${firstImageName}`
         },
-        "class_type": "LoadImage",
+        "class_type": "PrimitiveStringMultiline",
+        "_meta": {
+          "title": "bad room"
+        }
+      },
+      "143": {
+        "inputs": {
+          "path": [
+            "142",
+            0
+          ]
+        },
+        "class_type": "JWImageLoadRGBA",
+        "_meta": {
+          "title": "Image Load RGBA"
+        }
+      },
+      "144": {
+        "inputs": {
+          "value": `${COMFY_FILE_BASE_PATH}/ai-interior-designer/${secondImageName}`
+        },
+        "class_type": "PrimitiveStringMultiline",
         "_meta": {
           "title": "good room"
         }
       },
-      "141": {
+      "145": {
         "inputs": {
-          "image": "old_kitchen.jpg"
+          "path": [
+            "144",
+            0
+          ]
         },
-        "class_type": "LoadImage",
+        "class_type": "JWImageLoadRGBA",
         "_meta": {
-          "title": "bad room"
+          "title": "Image Load RGBA"
         }
       }
     }

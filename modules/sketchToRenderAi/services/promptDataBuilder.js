@@ -6,7 +6,7 @@ export default (contactId, query, imageName = '', COMFY_FILE_BASE_PATH) => (
         "prompt": {
             "1": {
               "inputs": {
-                "text": `${COMFY_FILE_BASE_PATH}${imageName}`
+                "text": `${COMFY_FILE_BASE_PATH}/sketch-to-render-ai/${imageName}`
               },
               "class_type": "> Text",
               "_meta": {
