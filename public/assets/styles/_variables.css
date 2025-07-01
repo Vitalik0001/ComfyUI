@@ -1,0 +1,44 @@
+:root {
+  /* Colors */
+  --primary-color: #007BFF;
+  --primary-hover-color: #0056b3;
+  --border-color: #ddd;
+  --text-color: #333;
+  --subtext-color: #555;
+  --background-color: #f9f9f9;
+  --preview-border-color: #ccc;
+  --preview-hover-border-color: var(--primary-color);
+  --loader-border-color: #e0e0e0;
+  --loader-border-top-color: green;
+  --button-disabled-bg: #ccc;
+  --button-back-bg: rgb(254, 77, 77);
+  --button-back-hover-bg: rgb(220, 60, 60);
+
+  /* Spacing */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+
+  /* Typography */
+  --font-family: sans-serif;
+  --font-size-base: 16px;
+  --font-size-lg: 1.25rem;
+  --font-size-xl: 2rem;
+  --font-size-xxl: 2.5rem;
+
+  /* Borders */
+  --border-radius: 6px;
+  --border-radius-lg: 12px;
+
+  /* Shadows */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 8px rgba(0,0,0,0.15);
+  --shadow-lg: 0 8px 16px rgba(0,0,0,0.2);
+  --shadow-preview: 0 4px 12px rgba(0, 123, 255, 0.2);
+
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+}

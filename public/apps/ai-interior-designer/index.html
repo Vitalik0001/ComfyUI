@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ComfyUI Server</title>
+  <link rel="stylesheet" href="../../assets/styles/_base.css" />
+</head>
+<body>
+  <h1>Ai Interior Designer</h1>
+
+  <div class="form-container">
+    <div class="title-container">
+      <button id="backButton" class="back-button">← Back</button>
+      <h2>Upload Two Images</h2>
+    </div>
+    <div class="button-container">
+      <input type="file" id="imageUpload1" accept="image/*" hidden />
+      <button id="uploadImageButton1">Upload First Image</button>
+
+      <input type="file" id="imageUpload2" accept="image/*" hidden />
+      <button id="uploadImageButton2">Upload Second Image</button>
+    </div>
+
+    <div id="previewContainer">
+      <img id="preview1" class="preview" />
+      <img id="preview2" class="preview" />
+    </div>
+
+    <label for="queryInput">Enter Prompt:</label>
+    <textarea id="queryInput" placeholder="Describe what to generate...">Modern kitchen, awesome design with white interior</textarea>
+
+    <div class="button-container">
+      <button id="processImagesButton">Generate Result</button>
+      <button id="downloadImageButton" disabled>Download Result</button>
+    </div>
+  </div>
+
+  <h2>Result Image:</h2>
+  <div id="loader" class="loader hidden"></div>
+  <div id="imageContainer"></div>
+
+  <script type="module" src="./script.js"></script>
+</body>
+</html>
