@@ -125,6 +125,8 @@ export class ComfyWebSocketHandler {
     }
 
     async getLastImage(timeout = 10000) {
+        console.log("this.images:", this.images);
+
         return new Promise((resolve, reject) => {
             const interval = setInterval(() => {
                 if (this.images.length > 0) {
