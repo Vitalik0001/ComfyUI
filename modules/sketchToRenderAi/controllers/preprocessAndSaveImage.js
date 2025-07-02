@@ -13,26 +13,45 @@ const UPLOADED_IMAGES_FOLDER_PATH = multerUploadsConfig.folderPath;
 
 export const preprocessImage = async (req, res, next) => {
   try {
+    console.log('[preprocessImage] Start processing uploaded image');
+
     const file = req.file;
     if (!file) {
+      console.error('[preprocessImage] No file uploaded');
       return res.status(400).json({ error: 'No file uploaded' });
     }
 
+    console.log('[preprocessImage] File received:', {
+      originalname: file.originalname,
+      mimetype: file.mimetype,
+      size: file.size,
+    });
+
     const requestId = uuidv4();
     req.requestId = requestId;
+    console.log(`[preprocessImage] Generated requestId: ${requestId}`);
 
     const routeName = req.baseUrl.split('/').pop();
+    console.log(`[preprocessImage] Extracted routeName: ${routeName}`);
+
     const targetFolder = helpers.getTargetFolder(UPLOADED_IMAGES_FOLDER_PATH, routeName);
     req.targetFolder = targetFolder;
-    
+    console.log(`[preprocessImage] Target folder resolved to: ${targetFolder}`);
+
     await fs.mkdir(targetFolder, { recursive: true });
+    console.log('[preprocessImage] Ensured target folder exists');
 
     const filename = helpers.generateFilename(file.originalname, imageProcessingConfig.fileExtension, requestId);
     const filepath = path.join(targetFolder, filename);
+    console.log(`[preprocessImage] Output filename: ${filename}`);
+    console.log(`[preprocessImage] Full file path: ${filepath}`);
 
+    console.log('[preprocessImage] Starting image processing...');
     const processedBuffer = await processImage(file.buffer);
+    console.log('[preprocessImage] Image processing complete');
 
     await fs.writeFile(filepath, processedBuffer);
+    console.log('[preprocessImage] Processed image written to disk');
 
     req.processedFile = {
       ...file,
@@ -44,9 +63,10 @@ export const preprocessImage = async (req, res, next) => {
       buffer: processedBuffer
     };
 
+    console.log('[preprocessImage] Image metadata set in req.processedFile');
     next();
   } catch (error) {
-    console.error('Image pre-processing failed:', error);
-    return res.status(500).json({ error: 'Image processing failed' });
+    console.error('[preprocessImage] Image pre-processing failed:', error);
+    return res.status(500).json({ error: 'Image processing failed', details: error.message });
   }
 };
